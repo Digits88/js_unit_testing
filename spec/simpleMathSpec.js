@@ -150,5 +150,53 @@ describe("SimpleMath", function () {
         });
     });
 
+    /*
+    describe("when waitsFor is used for testing real Ajax requests", function() {
+        it("should do this very well with the Jasmine Spy", function() {
+            
+            var successCallBack = jasmine.createSpy();
+            var failureCallBack = jasmine.createSpy(); 
+            var inputData       = {};
+
+            asyncSystem.doAjaxOperation(inputData, successCallBack, failureCallBack); 
+            
+            waitsFor(function() {
+                return successCallBack.callCount > 0;
+            }, "operation never completed", 10000);
+            
+            runs(function() {
+                expect(successCallBack).toHaveBeenCalled();
+                expect(failureCallBack).not.toHaveBeenCalled(); 
+            });
+        });
+    });
+    */
+
+    describe("Testing spyOn", function () {
+        it("should spy on instance methods", function () {
+            var simpleMath = new SimpleMath();
+
+            spyOn(simpleMath, 'getFactorial');
+            simpleMath.getFactorial(3);
+
+            expect(simpleMath.getFactorial).toHaveBeenCalledWith(3);
+        });
+    });
+
+    describe("when making a fake Ajax testing", function () {
+        it("should be done the Jamsine Spy and the andCallFake function", function () {
+            var successCallBack = jasmine.createSpy();
+            var failureCallBack = jasmine.createSpy();
+            var successFakeData = "Success Fake Data ...";
+
+            spyOn(asyncSystem, 'doAjaxOperation').andCallFake(function (inputData, successCallBack, failureCallBack) {
+                successCallBack(successFakeData);
+            });
+            asyncSystem.doAjaxOperation(inputData, successCallBack, failureCallBack);
+
+            expect(successCallBack).toHaveBeenCalled();
+            expect(failureCallBack).not.toHaveBeenCalled();
+        });
+    });
 
 });
