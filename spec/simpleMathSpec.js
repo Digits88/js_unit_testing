@@ -150,7 +150,6 @@ describe("SimpleMath", function () {
         });
     });
 
-    /*
     describe("when waitsFor is used for testing real Ajax requests", function() {
         it("should do this very well with the Jasmine Spy", function() {
             
@@ -170,7 +169,6 @@ describe("SimpleMath", function () {
             });
         });
     });
-    */
 
     describe("Testing spyOn", function () {
         it("should spy on instance methods", function () {
