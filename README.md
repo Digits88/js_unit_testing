@@ -1,2 +1,1 @@
-
-Based on Javascript Unit Testing book.
+Jasmine, YUITest, QUnit frameworks
